@@ -11,18 +11,43 @@
 </template>
 
 <script>
+// 引入工具类-目录自定义
+import http from "@/uitls/http";
+
+// 使用
+const params = { userId: 123, token: "mes-token" }; // 参数
+
 export default {
   data() {
     return {
       seen: true,
       todos: [
-        { text: '学习 JavaScript' },
-        { text: '学习 Vue' },
-        { text: '整个牛项目' }
-      ]
-    }
-  }
-}
+        { text: "学习 JavaScript" },
+        { text: "学习 Vue" },
+        { text: "整个牛项目" },
+      ],
+    };
+  },
+  created() {
+    console.log("request...");
+    http.post("/rpc/account", params);
+
+    // this.$axios({
+    //   method: "post",
+    //   url: "http://localhost:8082/rpc/account",
+    //   data: {
+    //     //这里是发送给后台的数据
+    //     userId: 123,
+    //     token: "mes-token",
+    //   },
+    // }).then((response) => {
+    //     //这里使用了ES6的语法
+    //     console.log("response", response.data); //请求成功返回的数据
+    //   }).catch(function (error) {
+    //     console.log("error",error);
+    //   });
+  },
+};
 </script>
 <style scoped>
 #app-4 {

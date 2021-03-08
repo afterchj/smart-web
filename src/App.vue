@@ -3,12 +3,34 @@
     <div id="nav">
       <router-link to="/Main">Main</router-link>|
       <router-link to="/home">Home</router-link>|
-      <router-link to="/about">About</router-link>
+      <!-- <router-link to="/about?id=1">About</router-link> -->
+      <router-link :to="{ name: 'About', query: { id: this.resData.id } }"
+        >点击按钮</router-link
+      >
     </div>
     <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      tid: { id: 1 },
+      resData: {},
+    };
+  },
+  mounted() {
+    this.add();
+  },
+  methods: {
+    add() {
+      this.resData = { id: 1 };
+      return this.resData;
+    },
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
