@@ -5,7 +5,7 @@ import axios from 'axios';
 const httpService = axios.create({
     // url前缀-'https://some-domain.com/api/'
     // baseURL: process.env.BASE_API, // 需自定义
-    baseURL:"http://localhost:8082/",
+    baseURL:"http://172.24.230.36:7000/",
     // 请求超时时间
     timeout: 3000 // 需自定义
 });
@@ -32,10 +32,10 @@ httpService.interceptors.response.use(
         // 统一处理状态
         const res = response.data;
         console.log("response:",res);
-        if (res.status != 200) { // 需自定义
+        if (res.code != 200) { // 需自定义
             // 返回异常
             return Promise.reject({
-                status: res.status,
+                code: res.code,
                 message: res.message
             });
         } else {
@@ -45,7 +45,7 @@ httpService.interceptors.response.use(
     // 处理处理
     error => {
          if (error && error.response) {
-            switch (error.response.status) {
+            switch (error.response.code) {
                 case 400:
                     error.message = '错误请求';
                     break;
@@ -83,7 +83,7 @@ httpService.interceptors.response.use(
                     error.message = 'http版本不支持该请求';
                     break;
                 default:
-                    error.message = `未知错误${error.response.status}`;
+                    error.message = `未知错误${error.response.code}`;
             }
         } else {
             error.message = "连接到服务器失败";

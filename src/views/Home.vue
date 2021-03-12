@@ -12,7 +12,7 @@
 
 <script>
 // 引入工具类-目录自定义
-import http from "@/uitls/http";
+import http from "@/uitls/https";
 
 // 使用
 const params = { userId: 123, token: "mes-token" }; // 参数
@@ -30,7 +30,7 @@ export default {
   },
   created() {
     console.log("request...");
-    http.post("/rpc/account", params);
+    http.post("/backmall/department/list", params);
 
     // this.$axios({
     //   method: "post",
