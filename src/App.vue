@@ -4,11 +4,10 @@
       <router-link to="/Main">Main</router-link>|
       <router-link to="/home">Home</router-link>|
       <router-link to="/login">Login</router-link>|
-      <router-link :to="{ name: 'About', query: { id: this.resData.id } }"
-        >点击按钮</router-link
-      >
+      <router-link :to="{ name: 'About', query: { id: this.resData.id } }">测试按钮</router-link>
     </div>
     <router-view />
+    <h1>hello </h1>
   </div>
 </template>
 

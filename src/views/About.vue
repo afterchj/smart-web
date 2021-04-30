@@ -11,7 +11,11 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "About",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("from", from.path, "to", to.path);
+    next();
+  },
+};
 </script>

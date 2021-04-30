@@ -5,7 +5,7 @@ import axios from 'axios';
 const httpService = axios.create({
     // url前缀-'https://some-domain.com/api/'
     // baseURL: process.env.BASE_API, // 需自定义
-    baseURL:"http://172.24.230.36:7000/",
+    baseURL:"http://172.24.230.36:8002/",
     // 请求超时时间
     timeout: 3000 // 需自定义
 });
